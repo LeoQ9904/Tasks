@@ -35,8 +35,8 @@ export interface UpdateCategoryData {
 
 export interface CreateTaskData {
   title: string;
-  description: string | null;
-  categoryId: string;
+  description?: string;
+  categoryId?: string;
   priority?: 'low' | 'medium' | 'high';
   dueDate: Date | null;
 }

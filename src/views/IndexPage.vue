@@ -208,8 +208,8 @@
 
       const newTask = await taskStore.createTask({
         title: taskData.title,
-        description: taskData.description || undefined,
-        categoryId: categoryId || undefined,
+        description: taskData.description,
+        categoryId: categoryId,
         priority: 'medium',
         dueDate: taskData.dueDate || null,
       });
