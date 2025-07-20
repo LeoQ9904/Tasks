@@ -1,2 +1,119 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+/* Ionic Variables and Theming - TEMA CLARO */
+:root {
+  /* Primary colors - Grises para tema claro */
+  --ion-color-primary: #4a5568;
+  --ion-color-primary-rgb: 74, 85, 104;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3a4350;
+  --ion-color-primary-tint: #5c6673;
+
+  /* Light theme colors with gray tones */
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+
+  --ion-text-color: #2d3748;
+  --ion-text-color-rgb: 45, 55, 72;
+
+  /* Escalas de grises claros */
+  --ion-color-step-50: #f7fafc;
+  --ion-color-step-100: #edf2f7;
+  --ion-color-step-150: #e2e8f0;
+  --ion-color-step-200: #cbd5e0;
+  --ion-color-step-250: #a0aec0;
+  --ion-color-step-300: #718096;
+  --ion-color-step-350: #4a5568;
+  --ion-color-step-400: #2d3748;
+  --ion-color-step-450: #1a202c;
+  --ion-color-step-500: #171923;
+  --ion-color-step-550: #1a1b23;
+  --ion-color-step-600: #1e1f26;
+  --ion-color-step-650: #22242a;
+  --ion-color-step-700: #26282e;
+  --ion-color-step-750: #2a2d33;
+  --ion-color-step-800: #2e3138;
+  --ion-color-step-850: #32363d;
+  --ion-color-step-900: #363a42;
+  --ion-color-step-950: #3a3f47;
+
+  /* Toolbar - tema claro */
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #2d3748;
+}
+
+/* Body styling - tema claro */
+body {
+  background-color: #ffffff;
+  color: #2d3748;
+}
+
+/* Content areas - tema claro */
+ion-content {
+  --background: #f7fafc;
+  --color: #2d3748;
+}
+
+/* Forzar tema claro personalizado independientemente del tema del dispositivo */
+* {
+  color-scheme: light !important;
+}
+
+/* Sobrescribir cualquier tema automático del dispositivo - TEMA CLARO */
+:root,
+html,
+body,
+ion-app {
+  --ion-background-color: #ffffff !important;
+  --ion-text-color: #2d3748 !important;
+  --ion-color-primary: #4a5568 !important;
+  --ion-color-secondary: #718096 !important;
+  background: #ffffff !important;
+  color: #2d3748 !important;
+}
+
+/* Forzar estilos en componentes Ionic - TEMA CLARO */
+ion-toolbar {
+  --background: #ffffff !important;
+  --color: #2d3748 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+ion-content {
+  --background: #f7fafc !important;
+  --color: #2d3748 !important;
+}
+
+ion-item {
+  --background: none !important;
+  --color: #2d3748 !important;
+  --border-color: transparent !important;
+}
+
+ion-button {
+  --background: #4a5568 !important;
+  --color: #ffffff !important;
+}
+
+ion-chip {
+  --background: #edf2f7 !important;
+  --color: #4a5568 !important;
+  border: 0px solid #e2e8f0 !important;
+}
+
+/* Prevenir que los media queries del dispositivo afecten el tema */
+@media (prefers-color-scheme: light) {
+  :root {
+    --ion-background-color: #ffffff !important;
+    --ion-text-color: #2d3748 !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #ffffff !important;
+    --ion-text-color: #2d3748 !important;
+  }
+}

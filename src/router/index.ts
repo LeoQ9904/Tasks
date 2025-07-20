@@ -4,17 +4,17 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/folder/Inbox'
+    redirect: '/folder/Tareas',
   },
   {
     path: '/folder/:id',
-    component: () => import ('../views/FolderPage.vue')
-  }
-]
+    component: () => import('../views/IndexPage.vue'),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
