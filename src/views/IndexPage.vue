@@ -61,6 +61,9 @@
       @createNewList="createNewList"
       @editCategory="handleEditCategorySubmit"
     />
+
+    <!-- Footer -->
+    <FooterComponent />
   </ion-page>
 </template>
 
@@ -82,6 +85,7 @@
   import TasksComponent from '@/components/TasksComponent.vue';
   import NewCategoryComponent from '@/components/NewCategoryComponent.vue';
   import NewTasksComponent from '@/components/NewTasksComponent.vue';
+  import FooterComponent from '@/components/FooterComponent.vue';
 
   // Stores de Pinia
   const categoryStore = useCategoryStore();

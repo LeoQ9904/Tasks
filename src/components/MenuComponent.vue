@@ -56,31 +56,39 @@
   } from '@ionic/vue';
   import { logoGoogle, logOutOutline } from 'ionicons/icons';
   import { useAuthStore } from '@/stores/auth';
+  import { useRouter } from 'vue-router';
   import { onMounted } from 'vue';
 
   const authStore = useAuthStore();
+  const router = useRouter();
 
   // Inicializar autenticación al montar el componente
   onMounted(async () => {
     if (!authStore.user && !authStore.isLoading) {
       console.log('🔄 Inicializando autenticación...');
       await authStore.initializeAuth();
-      if (!authStore.user) {
-        console.log('❌ No hay usuario autenticado');
-        await authStore.login();
-        await authStore.initializeAuth();
-      }
       console.log('✅ Autenticación finalizada');
     }
   });
 
   const handleLogin = async () => {
-    await authStore.login();
-    await authStore.initializeAuth();
+    const result = await authStore.login();
+    if (result.success) {
+      // Redirigir a la página principal después del login exitoso
+      router.replace('/folder/Tareas');
+    }
   };
 
   const handleLogout = async () => {
-    await authStore.logout();
+    const result = await authStore.logout();
+    if (result.success) {
+      // Redirigir a welcome solo si se está en una ruta protegida
+      const currentPath = router.currentRoute.value.path;
+      if (currentPath.startsWith('/folder/')) {
+        router.replace('/welcome');
+      }
+      // Si está en welcome, no redirigir (quedarse en la misma página)
+    }
   };
 </script>
 
