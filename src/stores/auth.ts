@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth', () => {
   );
 
   // Funciones de localStorage
-  const setSessionStorage = (userData: any) => {
+  const setSessionStorage = (userData: User) => {
     try {
       localStorage.setItem(
         AUTH_SESSION_KEY,
@@ -113,7 +113,7 @@ export const useAuthStore = defineStore('auth', () => {
         return {
           success: false,
           error: result.error,
-          message: result.message,
+          message: 'Error al iniciar sesión con Google',
         };
       }
     } catch (error) {

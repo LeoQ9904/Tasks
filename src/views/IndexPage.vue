@@ -61,9 +61,6 @@
       @createNewList="createNewList"
       @editCategory="handleEditCategorySubmit"
     />
-
-    <!-- Footer -->
-    <FooterComponent />
   </ion-page>
 </template>
 
@@ -85,7 +82,6 @@
   import TasksComponent from '@/components/TasksComponent.vue';
   import NewCategoryComponent from '@/components/NewCategoryComponent.vue';
   import NewTasksComponent from '@/components/NewTasksComponent.vue';
-  import FooterComponent from '@/components/FooterComponent.vue';
 
   // Stores de Pinia
   const categoryStore = useCategoryStore();
@@ -213,7 +209,7 @@
       const newTask = await taskStore.createTask({
         title: taskData.title,
         description: taskData.description,
-        categoryId: categoryId,
+        categoryId: categoryId || null,
         priority: 'medium',
         dueDate: taskData.dueDate || null,
       });

@@ -171,7 +171,9 @@ export class TaskService {
     try {
       const now = Timestamp.now();
       const taskData: FirestoreTaskData = {
-        ...data,
+        title: data.title,
+        description: data.description || null,
+        categoryId: data.categoryId || null,
         userId,
         completed: false,
         priority: data.priority || 'medium',
@@ -185,12 +187,12 @@ export class TaskService {
       return {
         id: docRef.id,
         title: data.title,
-        description: data.description,
+        description: data.description || null,
         completed: false,
-        categoryId: data.categoryId,
+        categoryId: data.categoryId || null,
         userId,
         priority: data.priority || 'medium',
-        dueDate: data.dueDate || undefined,
+        dueDate: data.dueDate || null,
         createdAt: now.toDate(),
         updatedAt: now.toDate(),
       };

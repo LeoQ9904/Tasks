@@ -1,4 +1,4 @@
-# 📋 Listo App - Gestor de Tareas
+# 📋 Tasks List - Gestor de Tareas
 
 Una aplicación moderna de gestión de tareas desarrollada con Vue.js, Ionic y Firebase. Permite organizar tareas por categorías, establecer fechas de vencimiento, y mantener un seguimiento completo de tu productividad.
 

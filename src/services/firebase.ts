@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, type FirebaseError } from 'firebase/app';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -64,70 +64,31 @@ export const loginWithGoogle = async () => {
       success: true,
       user: result.user,
     };
-  } catch (error: any) {
-    console.error('❌ Error en autenticación:', error);
-    console.error('🔍 Código de error:', error.code);
-    console.error('📝 Mensaje de error:', error.message);
+  } catch (error: unknown) {
+    // Type guard para verificar si es un FirebaseError
+    if (error instanceof Error && 'code' in error) {
+      const firebaseError = error as FirebaseError;
+      console.error('❌ Error en autenticación:', firebaseError);
+      console.error('🔍 Código de error:', firebaseError.code);
+      console.error('📝 Mensaje de error:', firebaseError.message);
 
-    // Manejo específico de errores comunes
-    if (error.code === 'auth/popup-blocked') {
       return {
         success: false,
-        error: error,
-        message:
-          'Popup bloqueado. Por favor permite ventanas emergentes en tu navegador.',
+        error: {
+          code: firebaseError.code,
+          message: firebaseError.message,
+        },
       };
     }
 
-    if (error.code === 'auth/popup-closed-by-user') {
-      return {
-        success: false,
-        error: error,
-        message: 'Autenticación cancelada por el usuario.',
-      };
-    }
-
-    if (error.code === 'auth/cancelled-popup-request') {
-      return {
-        success: false,
-        error: error,
-        message: 'Solicitud de popup cancelada.',
-      };
-    }
-
-    if (error.code === 'auth/unauthorized-domain') {
-      return {
-        success: false,
-        error: error,
-        message: 'Dominio no autorizado para autenticación.',
-      };
-    }
-
-    if (error.code === 'auth/operation-not-supported-in-this-environment') {
-      return {
-        success: false,
-        error: error,
-        message:
-          'Operación no soportada en este entorno. Verifica la configuración HTTPS.',
-      };
-    }
-
-    // Manejo específico para disallowed_useragent
-    if (
-      error.message?.includes('disallowed_useragent') ||
-      error.message?.includes('403')
-    ) {
-      return {
-        success: false,
-        error: error,
-        message: `Error de autenticación en la aplicación. Por favor, abre la aplicación en tu navegador web en: ${import.meta.env.VITE_APP_WEB_URL || window.location.origin}`,
-      };
-    }
-
+    // Error genérico
+    console.error('❌ Error desconocido en autenticación:', error);
     return {
       success: false,
-      error: error,
-      message: 'Error durante la autenticación. Inténtalo de nuevo.',
+      error: {
+        code: 'unknown',
+        message: 'Error desconocido durante la autenticación',
+      },
     };
   }
 };

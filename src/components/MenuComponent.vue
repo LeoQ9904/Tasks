@@ -1,5 +1,5 @@
 <template>
-  <ion-content>
+  <ion-content class="">
     <div class="menu-header">
       <ion-avatar>
         <img
@@ -44,6 +44,8 @@
       </div>
     </div>
   </ion-content>
+  <!-- Footer -->
+  <FooterComponent />
 </template>
 
 <script setup lang="ts">
@@ -58,6 +60,7 @@
   import { useAuthStore } from '@/stores/auth';
   import { useRouter } from 'vue-router';
   import { onMounted } from 'vue';
+  import FooterComponent from './FooterComponent.vue';
 
   const authStore = useAuthStore();
   const router = useRouter();

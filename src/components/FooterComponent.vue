@@ -1,22 +1,14 @@
 <template>
-  <ion-footer class="footer">
+  <ion-footer class="footer ion-no-border">
     <ion-toolbar class="footer-toolbar">
       <div class="footer-content">
         <div class="developer-info">
           <p class="footer-text">
-            Desarrollado con ❤️ por <span class="developer-name">LeoQ9904</span>
+            Desarrollado por <span class="developer-name">LeoQ9904</span>
           </p>
-          <p class="footer-subtext">LystTask © {{ currentYear }}</p>
-        </div>
-        <div class="footer-links">
-          <ion-button
-            fill="clear"
-            size="small"
-            class="footer-link"
-            @click="openGitHub"
+          <a class="footer-subtext" @click="openGitHub"
+            >LystTask © {{ currentYear }}</a
           >
-            <ion-icon :icon="logoGithub" slot="icon-only"></ion-icon>
-          </ion-button>
         </div>
       </div>
     </ion-toolbar>
@@ -24,8 +16,7 @@
 </template>
 
 <script setup lang="ts">
-  import { IonFooter, IonToolbar, IonButton, IonIcon } from '@ionic/vue';
-  import { logoGithub } from 'ionicons/icons';
+  import { IonFooter, IonToolbar } from '@ionic/vue';
   import { computed } from 'vue';
 
   const currentYear = computed(() => new Date().getFullYear());
@@ -37,19 +28,22 @@
 
 <style scoped>
   .footer {
-    --background: var(--ion-background-color);
     position: relative;
     z-index: 10;
     box-shadow: none;
   }
 
   .footer-toolbar {
-    --background: transparent;
     --color: var(--ion-text-color);
     --padding-start: 0;
     --padding-end: 0;
     --min-height: auto;
-    padding: 16px 0;
+    padding: 16px;
+    --background: none !important;
+  }
+
+  ion-toolbar {
+    border-bottom: none !important;
   }
 
   .footer-content {
@@ -59,7 +53,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20px;
   }
 
   .developer-info {

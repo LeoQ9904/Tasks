@@ -17,12 +17,14 @@
     tasks: Array<{
       id: string;
       title: string;
-      description?: string;
-      dueDate?: Date;
+      description: string | null;
       completed: boolean;
-      priority?: 'low' | 'medium' | 'high';
+      categoryId: string | null;
+      userId: string;
+      priority: 'low' | 'medium' | 'high';
+      dueDate?: Date | null;
     }>;
-    title: string;
+    title: string | null;
     selectedCategory: string | null;
     listCompleted: boolean;
   }

@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.tasksapp.leo',
-  appName: 'Listo App',
+  appName: 'Tasks List',
   webDir: 'dist',
   plugins: {
     SplashScreen: {
